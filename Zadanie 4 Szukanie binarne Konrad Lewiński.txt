@@ -1,0 +1,79 @@
+//Zadanie 4. Szukanie binarne
+//Konrad Lewiński, 99591
+//Informatyka niest., gr.4.
+
+//Celem algorytmu jest odnalezienie konkretnej komórki w posortowanym wektorze przy użyciu minimalnej ilosci porównań. 
+//Rozwiązanie polega na podzieleniu tablicy na dwie połówki, sprawdzeniu, w której z nich znajduje sie poszukiwana komórka, 
+//podzieleniu tej połowy tabeli na połowę i tak dalej.
+
+package szukaniebinarne;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class szukanieBinarne {
+
+public static void main(String[] args) {
+    Random r = new Random(); //Tworzymy obiekt klasy Random, który posłuży do losowania liczb
+    int a = (r.nextInt(5)+1); //Tworzymy zmienną "a", która będzie posiadać losową wartość z zakresu 1-5
+    int i = 0;
+    int[] tablica;
+
+    tablica = new int [100]; //Tutaj określiłem wielkość tablicy
+
+        for (i=0 ; i<99 ; i++){ 
+            if (i==0){                 //Tworzę pętlę, która przypisze losową wartość dla indeksu 0
+                tablica[i]=a;   
+        }
+            else{
+                a = (r.nextInt(5)+1); //Tutaj drugi raz określiłem zmienną, aby dla 
+                                      //każdego indeksu generowała się nowa, losowa wartość  
+                tablica[i]=(tablica[i-1] + a);
+        }
+
+    System.out.print(tablica[i] + " "); //Wypisanie całego wektora        
+    }
+        System.out.println("");
+    Scanner scanner = new Scanner(System.in);//tworzymy obiekt klasy Scanner
+    int szukanyElement;
+    System.out.print("Podaj liczbę całkowitą: ");
+    szukanyElement = scanner.nextInt(); //pobieramy liczbę całkowitą
+    System.out.println("Szukam: " + szukanyElement);
+
+{
+    boolean znaleziono = false;//zmienna służąca do określenia "znajduje/nie znajduje się"
+    int min = 0;//tutaj według strony ważniaka powinna być liczba 1, natomiast wtedy pomijany 
+                //jest element z indeksem 0, dlatego zdecydowałem się na wstawienie 0
+    int max = tablica.length - 1;
+
+    while (min <= max) { //Tutaj zaczyna się pętla służąca do dzielenia wektora na połówki - wyszukiwanie binarne
+        int polowa = (min + max) / 2;
+        System.out.println(" ");
+        if (tablica[polowa] < szukanyElement) {
+            min = polowa + 1;
+                for (int k = min; k <= max;k++){ //ta pętla służy do wyśwtietlania kolejnych etapów "dzielenia" wektora
+                    System.out.print(tablica[k] + " ");   
+                }
+                System.out.println(" ");
+
+        } else if (tablica[polowa] > szukanyElement) {
+            max = polowa - 1;
+                for (int k = min; k <= max;k++){//jak wyżej
+                    System.out.print(tablica[k] + " ");
+                }
+               System.out.println(" ");
+
+        } else if (tablica[polowa] == szukanyElement) {//gdy program znajdzie szukaną liczbę, wyświetli się stosowny komunikat
+            znaleziono = true;
+
+            System.out.println("Znaleziono liczbę");
+            break;
+        }
+    }
+    if (!znaleziono){//tym razem zastosowałem negację "!", tak jak w poprawionym przez Pana zadaniu 1.
+        System.out.println("Nie znaleziono liczby");
+        }
+
+    }
+}//main   
+}//class         

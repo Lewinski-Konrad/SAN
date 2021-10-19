@@ -1,0 +1,65 @@
+//Zadanie 5. Wpisywanie liczb.
+//Konrad Lewiński, 99591
+//Informatyka niest., gr.4.
+
+//Algorytm pozwala na wpisanie 10 liczb do wektora, a następnie daje nam możliwość posortowania tego wektora
+
+package skaner;
+
+import java.util.Scanner;
+
+public class Skaner {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);//tworzymy obiekt klasy Scanner
+int[] tablica = new int [10];
+System.out.print("Podaj 10 liczb wektora oddzielone spacją: ");
+
+for (int i=0; i<10; i++){
+    tablica[i] = scanner.nextInt(); //pobieramy 10 liczb całkowitych
+}
+    System.out.println("");
+    String czySortować; //tworzymy zmienną string, która umożliwi sortowanie wektora
+    Scanner sort = new Scanner(System.in);
+    System.out.print("Czy posortować? (wpisz rosnaco/malejaco/nie): ");//w zależności co wpiszemy, algorytm posortuje wektor lub nie
+    czySortować = sort.next();
+if ("nie".equals(czySortować)){//zwykłe wypisanie wektora, po wpisaniu "nie"
+    System.out.println("");
+    for (int i=0; i<10; i++)
+        System.out.print(tablica[i] + " ");
+}
+else if ("malejaco".equals(czySortować)){//pętla sortująca malejąco
+System.out.println("");
+int min,k,j,temp;
+
+for (k=0;k<(tablica.length-1);k++)  {
+min=k;
+    for (j=k+1;j<tablica.length;j++)
+        if (tablica[j]>=tablica[min]) 
+        min=j;
+        temp=tablica[min];
+        tablica[min]=tablica[k];
+        tablica[k]=temp;
+}
+    for (int i=0; i<10; i++)
+        System.out.print(tablica[i] + " ");//wypisanie wektora   
+}
+else if ("rosnaco".equals(czySortować)){//pętla sortująca rosnąco
+System.out.println("");
+    int min,k,j,temp;
+
+for (k=0;k<(tablica.length-1);k++)  {
+min=k;
+    for (j=k+1;j<tablica.length;j++)
+        if (tablica[j]<tablica[min]) 
+        min=j;
+        temp=tablica[min];
+        tablica[min]=tablica[k];
+        tablica[k]=temp;
+}
+    for (int i=0; i<10; i++)
+        System.out.print(tablica[i] + " ");//wypisanie wektora
+
+}
+
+}//main    
+}//class

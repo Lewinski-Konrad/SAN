@@ -1,0 +1,41 @@
+//Zadanie 3 generowanie liczb losowych w wektorze.
+//Konrad Lewiński, 99591
+//Informatyka niest., gr.4.
+
+//Często do testowania potrzebne są nam liczby losowe uporządkowane (rosnące lub malejące).
+//Ten algorytm generuje ciąg przypadkowych, rosnących liczb w wektorze 100-elementowym.
+
+package losowanie;
+import java.util.Random;
+public class Losowanie {
+
+    public static void main(String[] args) {
+
+        Random r = new Random(); //Tworzymy obiekt klasy Random, który posłuży do losowania liczb
+        int a = (r.nextInt(5)+1); //Tworzymy zmienną "a", która będzie posiadać losową wartość z zakresu 1-5
+        int i = 0;
+        int[] tablica;
+        
+        tablica = new int [100]; //Tutaj określiłem wielkość tablicy
+        
+            for (i=0 ; i<99 ; i++){ 
+                if (i==0){                 //Tworzę pętlę, która przypisze losową wartość indeksu 0
+                    tablica[i]=a;
+                
+            }
+            
+                else{
+                    
+                    a = (r.nextInt(5)+1); //Tutaj drugi raz określiłem zmienną, aby dla 
+                                          //każdego indeksu generowała się nowa, losowa wartość  
+                    tablica[i]=(tablica[i-1] + a);
+                
+            }
+            
+        System.out.print(tablica[i] + " "); //Wypisanie całego wektora
+                
+        }
+            System.out.println("");
+            System.out.println("Liczba elementów wektora: " + tablica.length); //Tutaj napisałem bardziej dla siebie, dla
+        }                                                                      //pewności, że elementów jest rzeczywiście 100
+    } 

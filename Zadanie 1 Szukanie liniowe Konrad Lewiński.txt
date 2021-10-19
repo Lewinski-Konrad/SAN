@@ -1,0 +1,39 @@
+//Zadanie 1 Szukanie liniowe.
+//Konrad Lewiński, 99591
+//Informatyka niest., gr.4.
+
+//Jedną z częściej wykonywanych w przetwarzaniu operacji jest przeszukiwanie – wektorów, list, tablic, plików itp. 
+//Ten algorytm ma za zadanie sprawdzić czy w wektorze jest jakaś liczba. Szukamy pierwszego wystąpienia jakiegoś elementu wektora (klucze (szukane elementy) mogą się powtarzać). 
+
+package zadanie.pkg1.szukanie.liniowe;
+
+public class Zadanie1SzukanieLiniowe {
+
+public static void main(String[] args) {
+
+int[] wek = {7,9,12,13,14,17,45,57,89,95}; //tutaj określamy nasz zbiór
+int liczba_szukana = 14; //wpisujemy liczbę szukaną
+boolean zawiera = false; //zmienna, której użyjemy do wyświetlenia komunikatu "znajduje/nie znajduje się"
+
+for(int i = 0; i < wek.length;i++) {//tworzymy pętlę, która sprawdzi wszystkie indeksy w wektorze	
+    	if (wek[i] == liczba_szukana){
+        	System.out.println("Liczba " + liczba_szukana + " znajduje się w zbiorze na pozycji " + (i+1)+"."); 
+        	//Jeśli jakakolwiek wartość w wektorze będzie równa szukanej liczbie, pojawi się informacja. 
+       
+        	zawiera = true; //gdy algorytm znajdzie liczbę, zmienna przyjmie wartość true
+        	break; //zakończenie pętli 
+    	}   
+    	else{
+        	zawiera = false; //gdy algorytm nie znajdzie liczby, zmienna przyjmie wartość false      
+    	}          
+}//for
+
+if (!zawiera) //jeśli algorytm nie znajdzie liczby w zbiorze, wyświetli komunikat
+        		      //użyłem zmiennej boolean, aby wyświetlał się tylko jeden komunikat
+                      	      //dla ogółu, a nie dla każdej sprawdzanej liczby
+        	System.out.println("Liczba " + liczba_szukana + " nie znajduje się w zbiorze.");
+
+}//main
+}//class
+    
+

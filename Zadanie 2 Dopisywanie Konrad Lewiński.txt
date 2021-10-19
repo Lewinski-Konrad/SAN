@@ -1,0 +1,52 @@
+//Zadanie 2 Dopisywanie.
+//Konrad Lewiński, 99591
+//Informatyka niest., gr.4.
+
+// Prostym a użytecznym algorytmem jest wstawianie elementu w ciąg posortowanych.
+// Poniższy algorytm dopisuje nowy element, z zachowniem posortowania.
+
+package dopisz;
+
+
+public class Dopisz {
+
+   
+    public static void main(String[] args) {
+        
+	int [] wek = {1,17,19,77,88,0,0,0,0,0};
+
+	int a,b,c; //Zmienne, które będą potrzebne przy listowaniu
+	int ile_elementów=5; //Ilość elementów aktualnie w wektorze
+	int dopisana=25; //Liczba dopisywana
+
+	//Listowanie początkowych danych
+	for(a=0;a<wek.length;a++)
+	{
+    		System.out.print(wek[a] + " ");    
+	}
+	System.out.println();
+	System.out.println("Dopisujemy liczbę "+dopisana);
+
+	for(b=0; b<ile_elementów; b++) // Znajdujemy miejsce, gdzie należy wstawić liczbę 
+
+    		if(wek[b] > dopisana) break;
+
+		System.out.println("Wstawiamy ją na miejsce: " + (b+1) + "." );//Wypisujemy numer, na którym znajdować będzie się liczba
+
+	for(c=ile_elementów; c>b; c--) // Przesuwany elementy w prawo (w górę)
+
+    		wek[c] = wek[c-1];
+		wek[b] = dopisana; // Wstawiamy dopisaną liczbę
+
+	ile_elementów++; // powiększamy ilość elementów wektora
+
+	//listowanie wynikow
+	for(a=0;a<wek.length;a++)
+	{
+    	System.out.print(wek[a] + " ");    
+	}
+
+
+    }
+    
+}
